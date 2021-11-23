@@ -1,12 +1,12 @@
-S -> H0 End, H1 NL, H3 H2, H4 H2, H5 NL, H6 End, H7 ELSE, H7 ELIF, H8 End, H9 NL, H10 Break, H11 Break, Import H2, H12 End, H13 NL, H14 Break, H15 Break
-FUNCTION -> H5 NL, H6 End, H7 ELSE, H7 ELIF, H8 End, H9 NL, H10 Break, H11 Break, H12 End, H13 NL, H14 Break, H15 Break
-ELIF -> H16 ELIF, H17 NL, H18 End
-ELSE -> Else End, H19 NL, H20 End, H21 NL
-Arg -> H22 H2, Var
-Ex -> H23 H2, H23 OPR, H24 H2, H24 OPR, H25 Pc, "True", "False"
-OPR -> H26 H2, H26 OPR, H27 H2, H27 OPR, H28 Pc
+S -> H0 End, H2 H1, H3 H1, H4 End, H5 ELSE, H5 ELIF, H6 End, H7 Break, H8 Break, Import H1, H9 End, H10 Break, H11 Break
+FUNCTION -> H4 End, H5 ELSE, H5 ELIF, H6 End, H7 Break, H8 Break, H9 End, H10 Break, H11 Break
+ELIF -> H12 ELIF, H13 End
+ELSE -> Else End, H14 End
+Arg -> H15 H1, Var
+Ex -> H16 H1, H16 OPR, H17 H1, H17 OPR, H18 Pc, "True", "False"
+OPR -> H19 H1, H19 OPR, H20 H1, H20 OPR, H21 Pc
 NL -> Newline NL, "\n"
-Comma -> H29 H30
+Comma -> ","
 Import -> "import"
 Return -> "return"
 Def -> "def"
@@ -22,42 +22,37 @@ Else -> "else"
 If -> "if"
 End -> ":"
 Newline -> "\n"
-H0 -> H31 Pc
-H1 -> H0 End
-H2 -> Var
-H3 -> H32 Return
-H4 -> H33 Return
-H5 -> H6 End
-H6 -> If Ex
-H7 -> H5 NL
-H8 -> For Ex
-H9 -> H8 End
-H10 -> H9 NL
-H11 -> H34 NL
-H12 -> While Ex
-H13 -> H12 End
-H14 -> H13 NL
-H15 -> H35 NL
-H16 -> ELIF NL
-H17 -> H18 End
-H18 -> Elif Ex
-H19 -> Else End
-H20 -> H16 Else
-H21 -> H20 End
-H22 -> H2 Comma
-H23 -> H2 Comp
-H24 -> OPR Comp
-H25 -> Po Ex
-H26 -> H2 Op
-H27 -> OPR Op
-H28 -> Po OPR
-H29 -> "
-H30 -> ,"
-H31 -> H36 Arg
-H32 -> H1 NL
-H33 -> H37 NL
-H34 -> H10 FUNCTION
-H35 -> H14 FUNCTION
-H36 -> H38 Po
-H37 -> H32 FUNCTION
-H38 -> Def H2
+H0 -> H24 Pc
+H1 -> Var
+H2 -> H25 Return
+H3 -> H26 Return
+H4 -> If Ex
+H5 -> H27 NL
+H6 -> For Ex
+H7 -> H28 NL
+H8 -> H29 NL
+H9 -> While Ex
+H10 -> H30 NL
+H11 -> H31 NL
+H12 -> ELIF NL
+H13 -> Elif Ex
+H14 -> H12 Else
+H15 -> H1 Comma
+H16 -> H1 Comp
+H17 -> OPR Comp
+H18 -> Po Ex
+H19 -> H1 Op
+H20 -> OPR Op
+H21 -> Po OPR
+H24 -> H32 Arg
+H25 -> H33 NL
+H26 -> H34 NL
+H27 -> H4 End
+H28 -> H6 End
+H29 -> H7 FUNCTION
+H30 -> H9 End
+H31 -> H10 FUNCTION
+H32 -> H35 Po
+H33 -> H0 End
+H34 -> H25 FUNCTION
+H35 -> Def H1
