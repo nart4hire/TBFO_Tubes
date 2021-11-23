@@ -1,11 +1,12 @@
-S -> H0 End, H1 NL, H3 H2, H4 NL, H5 End, H6 ELSE, H6 ELIF, H7 End, H8 NL, H9 Break, Import H2, H10 End, H11 NL, H12 Break
-ELIF -> H13 ELIF, H14 NL, H15 End
-ELSE -> Else End, H16 NL, H17 End, H18 NL
-Arg -> H19 H2, Var
-Ex -> H20 H2, H20 OPR, H21 H2, H21 OPR, H22 Pc, "True", "False"
-OPR -> H23 H2, H23 OPR, H24 H2, H24 OPR, H25 Pc
+S -> H0 End, H1 NL, H3 H2, H4 H2, H5 NL, H6 End, H7 ELSE, H7 ELIF, H8 End, H9 NL, H10 Break, H11 Break, Import H2, H12 End, H13 NL, H14 Break, H15 Break
+FUNCTION -> H5 NL, H6 End, H7 ELSE, H7 ELIF, H8 End, H9 NL, H10 Break, H11 Break, H12 End, H13 NL, H14 Break, H15 Break
+ELIF -> H16 ELIF, H17 NL, H18 End
+ELSE -> Else End, H19 NL, H20 End, H21 NL
+Arg -> H22 H2, Var
+Ex -> H23 H2, H23 OPR, H24 H2, H24 OPR, H25 Pc, "True", "False"
+OPR -> H26 H2, H26 OPR, H27 H2, H27 OPR, H28 Pc
 NL -> Newline NL, "\n"
-Comma -> ","
+Comma -> H29 H30
 Import -> "import"
 Return -> "return"
 Def -> "def"
@@ -21,33 +22,42 @@ Else -> "else"
 If -> "if"
 End -> ":"
 Newline -> "\n"
-H0 -> H26 Pc
+H0 -> H31 Pc
 H1 -> H0 End
 H2 -> Var
-H3 -> H27 Return
-H4 -> H5 End
-H5 -> If Ex
-H6 -> H4 NL
-H7 -> For Ex
-H8 -> H7 End
-H9 -> H8 NL
-H10 -> While Ex
-H11 -> H10 End
-H12 -> H11 NL
-H13 -> ELIF NL
-H14 -> H15 End
-H15 -> Elif Ex
-H16 -> Else End
-H17 -> H13 Else
-H18 -> H17 End
-H19 -> H2 Comma
-H20 -> H2 Comp
-H21 -> OPR Comp
-H22 -> Po Ex
-H23 -> H2 Op
-H24 -> OPR Op
-H25 -> Po OPR
-H26 -> H28 Arg
-H27 -> H1 NL
-H28 -> H29 Po
-H29 -> Def H2
+H3 -> H32 Return
+H4 -> H33 Return
+H5 -> H6 End
+H6 -> If Ex
+H7 -> H5 NL
+H8 -> For Ex
+H9 -> H8 End
+H10 -> H9 NL
+H11 -> H34 NL
+H12 -> While Ex
+H13 -> H12 End
+H14 -> H13 NL
+H15 -> H35 NL
+H16 -> ELIF NL
+H17 -> H18 End
+H18 -> Elif Ex
+H19 -> Else End
+H20 -> H16 Else
+H21 -> H20 End
+H22 -> H2 Comma
+H23 -> H2 Comp
+H24 -> OPR Comp
+H25 -> Po Ex
+H26 -> H2 Op
+H27 -> OPR Op
+H28 -> Po OPR
+H29 -> "
+H30 -> ,"
+H31 -> H36 Arg
+H32 -> H1 NL
+H33 -> H37 NL
+H34 -> H10 FUNCTION
+H35 -> H14 FUNCTION
+H36 -> H38 Po
+H37 -> H32 FUNCTION
+H38 -> Def H2
