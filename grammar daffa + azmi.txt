@@ -1,49 +1,41 @@
-S ->  DEF | IMPORT | FUNCTION
-FUNCTION -> IF | WHILE | FOR
+S ->  DEF | IMPORT | CLASS | SUITE | WITH
 
-IF -> If Ex End | If Ex End NL ELSE | If Ex End NL ELIF
+SUITE -> IF | LOOP | ASSIGNMENT | METHOD
 
-ELIF -> ELIF NL ELIF | Elif Ex End
+ASSIGNMENT -> Var Assign EXPR
 
-ELSE -> Else End | ELIF NL Else End
+EXPR -> Var | Var Op EXPR | Var Per EXPR | Var Comma EXPR | Var Dot METHOD | METHOD | Var Comp EXPR | Po EXPR Pc | Bool | Not EXPR | IN | IS
 
-WHILE -> While Ex End | While Ex End NL Break | While Ex End NL FUNCTION NL Break
+METHOD -> Var Po EXPR Pc | Var Po EXPR Pc Dot METHOD
 
-FOR -> For Ex End | For Ex End NL Break | For Ex End NL FUNCTION NL Break
+IF -> If EXPR End | If EXPR End NL Raise Var | If Ex End NL ELIF NL ELSE | If Ex End NL ELSE | If Ex End NL SUITE NL ELIF NL SUITE NL ELSE | If Ex End NL SUITE NL ELSE | If Ex End NL SUITE NL ELIF NL ELSE | If Ex End NL ELIF NL SUITE NL ELSE
 
-DEF -> Def Var Po Arg Pc End | Def Var Po Arg Pc End NL Return Var | Def Var Po Arg Pc End NL FUNCTION NL Return Var
+ELIF -> ELIF NL ELIF | ELIF NL SUITE NL ELIF | Elif EXPR End
 
-Arg -> Var Comma Var | Var
+ELSE -> Else End
 
-IMPORT -> Import Var
+WHILE -> While EXPR End | While EXPR End NL CONTROL | While EXPR End NL SUITE NL CONTROL
 
-Ex -> Var Comp Var | Var Comp OPR | OPR Comp Var | OPR Comp OPR | T | F | Po Ex Pc
+FOR -> For EXPR End | For EXPR End NL CONTROL | For EXPR End NL SUITE NL CONTROL
 
-OPR -> Var Op Var | Var Op OPR | OPR Op Var | OPR Op OPR | Po OPR Pc
+DEF -> Def Var Po EXPR Pc End | Def Var Po EXPR Pc End NL Pass | Def Var Po EXPR Pc End NL Return EXPR | Def Var Po EXPR Pc End NL SUITE NL Return EXPR
+
+IMPORT -> Import Var | IMPORT As Var | From Var IMPORT
 
 NL -> Newline NL | Newline
 
-CLASS -> Class Var End
+CLASS -> Class Var End | Class Var End NL Pass
 
 LOOP -> FOR | WHILE
 
-CONTINUE -> LOOP NL IF NL Continue | LOOP NL IF NL Continue 
+CONTROL -> Break | Continue
 
-AS -> IMPORT As Var
+WITH -> With EXPR as EXPR End
 
-FROM -> From Var IMPORT
+IN -> EXPR In EXPR | For EXPR In EXPR End
 
-PASS -> CLASS NL Pass | DEF NL Pass
+IS -> Var Is EXPR | Po IS Pc
 
-RAISE -> IF NL Raise Var
-
-WITH -> With Var as Var End 
-
-IN -> Var In Var | For Var In Var End
-
-NOT -> Not Var | Not Bool | Po NOT Pc | Not NOT
-
-IS -> Var Is Var | Po IS Pc
 Comma -> ","
 Import -> "import"
 Return -> "return"
