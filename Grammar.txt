@@ -1,0 +1,41 @@
+S ->  DEF, IMPORT, FUNCTION
+FUNCTION -> IF, WHILE, FOR
+
+IF -> If Ex End NL, If Ex End, If Ex End NL ELSE, If Ex End NL ELIF
+
+ELIF -> ELIF NL ELIF, Elif Ex End NL, Elif Ex End
+
+ELSE -> Else End, Else End NL, ELIF NL Else End, ELIF NL Else End NL
+
+WHILE -> While Ex End, While Ex End NL, While Ex End Break
+
+FOR -> For Ex End, For Ex End NL, For Ex End NL Break
+
+DEF -> Def Var Po Arg Pc End, Def Var Po Arg Pc End NL, Def Var Po Arg Pc End NL Return
+
+IMPORT -> Import Var
+
+Ex -> Var Comp Var, Var Comp OPR, OPR Comp Var, OPR Comp OPR, T, F, Po Ex Pc
+
+OPR -> Var Op Var, Var Op OPR, OPR Op Var, OPR Op OPR, Po OPR Pc
+
+NL -> Newline NL, Newline
+
+Import -> "import"
+Return -> "return"
+Def -> "def"
+While -> "while"
+For -> "for"
+Break -> "break"
+T -> "True"
+F -> "False"
+Assign -> "=", "+=", "-=", "*=", "//=", "%=", "/="
+Comp -> "==", ">", "<", ">=", "<=", "!="
+Op -> "+", "-", "*", "/", "//", "%", "**"
+Po -> "("
+Pc -> ")"
+Elif -> "elif"
+Else -> "else"
+If -> "if"
+End -> ":"
+Newline -> "\n"
