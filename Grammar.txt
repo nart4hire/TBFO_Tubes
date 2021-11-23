@@ -7,11 +7,13 @@ ELIF -> ELIF NL ELIF, Elif Ex End NL, Elif Ex End
 
 ELSE -> Else End, Else End NL, ELIF NL Else End, ELIF NL Else End NL
 
-WHILE -> While Ex End, While Ex End NL, While Ex End Break
+WHILE -> While Ex End, While Ex End NL, While Ex End NL Break
 
 FOR -> For Ex End, For Ex End NL, For Ex End NL Break
 
-DEF -> Def Var Po Arg Pc End, Def Var Po Arg Pc End NL, Def Var Po Arg Pc End NL Return
+DEF -> Def Var Po Arg Pc End, Def Var Po Arg Pc End NL, Def Var Po Arg Pc End NL Return Var
+
+Arg -> Var Comma Var, Var
 
 IMPORT -> Import Var
 
@@ -21,6 +23,7 @@ OPR -> Var Op Var, Var Op OPR, OPR Op Var, OPR Op OPR, Po OPR Pc
 
 NL -> Newline NL, Newline
 
+Comma -> ","
 Import -> "import"
 Return -> "return"
 Def -> "def"

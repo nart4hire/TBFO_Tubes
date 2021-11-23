@@ -1,0 +1,53 @@
+S -> H0 End, H1 NL, H3 H2, H4 NL, H5 End, H6 ELSE, H6 ELIF, H7 End, H8 NL, H9 Break, Import H2, H10 End, H11 NL, H12 Break
+ELIF -> H13 ELIF, H14 NL, H15 End
+ELSE -> Else End, H16 NL, H17 End, H18 NL
+Arg -> H19 H2, Var
+Ex -> H20 H2, H20 OPR, H21 H2, H21 OPR, H22 Pc, "True", "False"
+OPR -> H23 H2, H23 OPR, H24 H2, H24 OPR, H25 Pc
+NL -> Newline NL, "\n"
+Comma -> ","
+Import -> "import"
+Return -> "return"
+Def -> "def"
+While -> "while"
+For -> "for"
+Break -> "break"
+Comp -> "==", ">", "<", ">=", "<=", "!="
+Op -> "+", "-", "*", "/", "//", "%", "**"
+Po -> "("
+Pc -> ")"
+Elif -> "elif"
+Else -> "else"
+If -> "if"
+End -> ":"
+Newline -> "\n"
+H0 -> H26 Pc
+H1 -> H0 End
+H2 -> Var
+H3 -> H27 Return
+H4 -> H5 End
+H5 -> If Ex
+H6 -> H4 NL
+H7 -> For Ex
+H8 -> H7 End
+H9 -> H8 NL
+H10 -> While Ex
+H11 -> H10 End
+H12 -> H11 NL
+H13 -> ELIF NL
+H14 -> H15 End
+H15 -> Elif Ex
+H16 -> Else End
+H17 -> H13 Else
+H18 -> H17 End
+H19 -> H2 Comma
+H20 -> H2 Comp
+H21 -> OPR Comp
+H22 -> Po Ex
+H23 -> H2 Op
+H24 -> OPR Op
+H25 -> Po OPR
+H26 -> H28 Arg
+H27 -> H1 NL
+H28 -> H29 Po
+H29 -> Def H2
