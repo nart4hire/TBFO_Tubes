@@ -1,0 +1,114 @@
+       S -> H0 End
+          | H2 H1
+          | H3 H1
+          | H4 End
+          | H5 ELSE
+          | H5 ELIF
+          | H6 End
+          | H7 Break
+          | H8 Break
+          | Import H1
+          | H9 End
+          | H10 Break
+          | H11 Break
+FUNCTION -> H4 End
+          | H5 ELSE
+          | H5 ELIF
+          | H6 End
+          | H7 Break
+          | H8 Break
+          | H9 End
+          | H10 Break
+          | H11 Break
+    ELIF -> H12 ELIF
+          | H13 End
+    ELSE -> Else End
+          | H14 End
+     Arg -> H15 H1
+          | Var
+      Ex -> H16 H1
+          | H16 OPR
+          | H17 H1
+          | H17 OPR
+          | H18 Pc
+          | "True"
+          | "False"
+     OPR -> H19 H1
+          | H19 OPR
+          | H20 H1
+          | H20 OPR
+          | H21 Pc
+      NL -> Newline NL
+          | "\n"
+   Comma -> ","
+  Import -> "import"
+  Return -> "return"
+     Def -> "def"
+   While -> "while"
+     For -> "for"
+   Break -> "break"
+    Comp -> H38 H37
+      Op -> H40 H39
+      Po -> "("
+      Pc -> ")"
+    Elif -> "elif"
+    Else -> "else"
+      If -> "if"
+     End -> ":"
+ Newline -> "\n"
+      H0 -> H41 Pc
+      H1 -> Var
+      H2 -> H42 Return
+      H3 -> H43 Return
+      H4 -> If Ex
+      H5 -> H44 NL
+      H6 -> For Ex
+      H7 -> H45 NL
+      H8 -> H46 NL
+      H9 -> While Ex
+     H10 -> H47 NL
+     H11 -> H48 NL
+     H12 -> ELIF NL
+     H13 -> Elif Ex
+     H14 -> H12 Else
+     H15 -> H1 Comma
+     H16 -> H1 Comp
+     H17 -> OPR Comp
+     H18 -> Po Ex
+     H19 -> H1 Op
+     H20 -> OPR Op
+     H21 -> Po OPR
+     H37 -> "!="
+     H38 -> H56 H55
+     H39 -> "**"
+     H40 -> H58 H57
+     H41 -> H59 Arg
+     H42 -> H60 NL
+     H43 -> H61 NL
+     H44 -> H4 End
+     H45 -> H6 End
+     H46 -> H7 FUNCTION
+     H47 -> H9 End
+     H48 -> H10 FUNCTION
+     H55 -> "<=",
+     H56 -> H69 H68
+     H57 -> "%",
+     H58 -> H71 H70
+     H59 -> H72 Po
+     H60 -> H0 End
+     H61 -> H42 FUNCTION
+     H68 -> ">=",
+     H69 -> H76 H75
+     H70 -> "//",
+     H71 -> H78 H77
+     H72 -> Def H1
+     H75 -> "<",
+     H76 -> H81 H82
+     H77 -> "/",
+     H78 -> H84 H83
+     H81 -> "==",
+     H82 -> ">",
+     H83 -> "*",
+     H84 -> H87 H88
+     H87 -> "+",
+     H88 -> "-",

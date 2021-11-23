@@ -1,0 +1,81 @@
+S ->  DEF | IMPORT | FUNCTION
+FUNCTION -> IF | WHILE | FOR
+
+IF -> If Ex End | If Ex End NL ELSE | If Ex End NL ELIF
+
+ELIF -> ELIF NL ELIF | Elif Ex End
+
+ELSE -> Else End | ELIF NL Else End
+
+WHILE -> While Ex End | While Ex End NL Break | While Ex End NL FUNCTION NL Break
+
+FOR -> For Ex End | For Ex End NL Break | For Ex End NL FUNCTION NL Break
+
+DEF -> Def Var Po Arg Pc End | Def Var Po Arg Pc End NL Return Var | Def Var Po Arg Pc End NL FUNCTION NL Return Var
+
+Arg -> Var Comma Var | Var
+
+IMPORT -> Import Var
+
+Ex -> Var Comp Var | Var Comp OPR | OPR Comp Var | OPR Comp OPR | T | F | Po Ex Pc
+
+OPR -> Var Op Var | Var Op OPR | OPR Op Var | OPR Op OPR | Po OPR Pc
+
+NL -> Newline NL | Newline
+
+CLASS -> Class Var End
+
+LOOP -> FOR | WHILE
+
+CONTINUE -> LOOP NL IF NL Continue | LOOP NL IF NL Continue 
+
+AS -> IMPORT As Var
+
+FROM -> From Var IMPORT
+
+PASS -> CLASS NL Pass | DEF NL Pass
+
+RAISE -> IF NL Raise Var
+
+WITH -> With Var as Var End 
+
+IN -> Var In Var | For Var In Var End
+
+NOT -> Not Var | Not Bool | Po NOT Pc | Not NOT
+
+IS -> Var Is Var | Po IS Pc
+Comma -> ","
+Import -> "import"
+Return -> "return"
+Def -> "def"
+While -> "while"
+For -> "for"
+Break -> "break"
+T -> "True"
+F -> "False"
+Assign -> "=", "+=", "-=", "*=", "//=", "%=", "/="
+Comp -> "==", ">", "<", ">=", "<=", "!="
+Op -> "+", "-", "*", "/", "//", "%", "**"
+Po -> "("
+Pc -> ")"
+Elif -> "elif"
+Else -> "else"
+If -> "if"
+End -> ":"
+Newline -> "\n"
+
+Continue -> "continue"
+Class -> "class"
+As -> "as"
+From -> "from"
+Pass -> "pass"
+Raise -> "raise"
+With -> "with"
+In -> "in"
+Not -> "not"
+Is -> "is"
+
+Exp -> Var | Var Ops | Var Comp
+Ops -> Per Exp | Per Bool
+Per -> "and" | "or"
+Bool -> "True" | "False" | "None"
