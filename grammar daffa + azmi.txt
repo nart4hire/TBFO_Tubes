@@ -8,15 +8,15 @@ EXPR -> Var | Var Op EXPR | Var Per EXPR | Var Comma EXPR | Var Dot METHOD | MET
 
 METHOD -> Var Po EXPR Pc | Var Po EXPR Pc Dot METHOD
 
-IF -> If EXPR End | If EXPR End NL Raise Var | If Ex End NL ELIF NL ELSE | If Ex End NL ELSE | If Ex End NL SUITE NL ELIF NL SUITE NL ELSE | If Ex End NL SUITE NL ELSE | If Ex End NL SUITE NL ELIF NL ELSE | If Ex End NL ELIF NL SUITE NL ELSE
+IF -> If EXPR End | If EXPR End NL Raise Var | If Ex End NL ELIF NL ELSE | If Ex End NL ELSE | If Ex End NL SUITE NL ELIF NL SUITE NL ELSE | If Ex End NL SUITE NL ELSE | If Ex End NL SUITE NL ELIF NL ELSE | If Ex End NL ELIF NL SUITE NL ELSE | IF SUITE
 
 ELIF -> ELIF NL ELIF | ELIF NL SUITE NL ELIF | Elif EXPR End
 
 ELSE -> Else End
 
-WHILE -> While EXPR End | While EXPR End NL CONTROL | While EXPR End NL SUITE NL CONTROL
+WHILE -> While EXPR End | While EXPR End NL CONTROL | While EXPR End NL SUITE NL CONTROL | WHILE SUITE
 
-FOR -> For EXPR End | For EXPR End NL CONTROL | For EXPR End NL SUITE NL CONTROL
+FOR -> For EXPR End | For EXPR End NL CONTROL | For EXPR End NL SUITE NL CONTROL | FOR SUITE
 
 DEF -> Def Var Po EXPR Pc End | Def Var Po EXPR Pc End NL Pass | Def Var Po EXPR Pc End NL Return EXPR | Def Var Po EXPR Pc End NL SUITE NL Return EXPR
 
@@ -45,9 +45,9 @@ For -> "for"
 Break -> "break"
 T -> "True"
 F -> "False"
-Assign -> "=", "+=", "-=", "*=", "//=", "%=", "/="
-Comp -> "==", ">", "<", ">=", "<=", "!="
-Op -> "+", "-", "*", "/", "//", "%", "**"
+Assign -> "=" | "+=" | "-=" | "*=" | "//=" | "%=" | "/="
+Comp -> "==" | ">" | "<" | ">=" | "<=" | "!="
+Op -> "+" | "-" | "*" | "/" | "//" | "%" | "**"
 Po -> "("
 Pc -> ")"
 Elif -> "elif"
