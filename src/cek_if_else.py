@@ -5,8 +5,6 @@ print(nama)
 print("sedangkan umur saat ini adalah")
 print(umur_5_tahun_lalu + 5)
 
-
-
 if (nama == "nathan") :
     print("selamat datang Nathan!")
 elif (nama == "azmi") :

@@ -7,6 +7,7 @@ greg = "name"
 
 lista = ["dog"]
 listb = [1, "lol", greg]
+listc = [[x for x in lista] for y in lista]
 
 tupa = ()
 tupb = (2, greg, "kek")
