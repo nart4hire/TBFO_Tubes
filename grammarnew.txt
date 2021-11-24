@@ -27,13 +27,9 @@ METHOD -> Var POpen EXPR Pc | Var POpen EXPR Pc Dot METHOD
 If_func -> If_real EXPR End | If_func SUITE1 
 
 
-INL_IF -> SUITE1 If_real EXPR | SUITE1 If_real EXPR ELF_F | SUITE1 If_real EXPR ELS_F | INL_IF For EXPR
+INL_IF -> ANNY If_real EXPR | ANNY If_real EXPR ELS_F | INL_IF For EXPR
 
-INL_FOR -> SUITE1 For EXPR | INL_FOR If_real EXPR | INL_FOR If_real EXPR ELF_F | INL_FOR If_real EXPR ELS_F 
-
-
-
-
+INL_FOR -> ANNY For EXPR | INL_FOR If_real EXPR | INL_FOR If_real EXPR ELS_F 
 
 ELF_F -> Elif EXPR End | ELF_F SUITE1
 
