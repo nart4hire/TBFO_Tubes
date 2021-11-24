@@ -1,181 +1,86 @@
-       S -> H0 End
-          | H1 EXPR
-          | H2 End
-          | H3 End
-          | IF SUITE1
-          | H4 End
-          | WHILE SUITE1
-          | Import H5
-          | H6 H5
-          | H7 H5
-          | H8 H5
-          | H9 End
-          | H10 End
-          | FOR SUITE1
-          | H11 End
-          | H12 EXPR
-          | H13 Pc
-          | H14 METHOD
-  SUITE1 -> H12 EXPR
-          | H13 Pc
-          | H14 METHOD
-    EXPR -> H15 Singles
-          | H16 Singles
-          | H17 METHOD
-          | H18 Singles
-          | H19 Pc
-          | NOT Singles
-          | H20 ARG
-          | H13 Pc
-          | H14 METHOD
-          | "True"
-          | "False"
-          | "None"
-          | H21 Structs
-          | H22 Structs
-          | Var
-          | Str
-          | Num
-          | 
-          | H23 EXPR
-          | H24 Pc
-          | H25 SC
-          | SO SC
-          | H26 Cc
-          | Co Cc
-          | H27 Pc
-          | Po Pc
-     NOT -> NOT Not
-          | "not"
-     ARG -> H20 ARG
-          | H25 SC
-          | SO SC
-          | H26 Cc
-          | Co Cc
-          | Var
-          | Str
-          | Num
-          | 
-          | H27 Pc
-          | Po Pc
-          | H13 Pc
-          | H14 METHOD
-ARG_DICT -> H28 Any_Dict
-          | H29 Any
-Any_Dict -> H29 Any
-     Any -> Var
-          | Str
-          | Num
-          | 
-          | H13 Pc
-          | H14 METHOD
-          | H25 SC
-          | SO SC
-          | H26 Cc
-          | Co Cc
-          | H27 Pc
-          | Po Pc
- Singles -> Var
-          | Str
-          | Num
-          | 
- Structs -> H25 SC
-          | SO SC
-          | H26 Cc
-          | Co Cc
-          | H27 Pc
-          | Po Pc
-  METHOD -> H13 Pc
-          | H14 METHOD
-      IF -> H3 End
-          | IF SUITE1
-   WHILE -> H4 End
-          | WHILE SUITE1
-     FOR -> H10 End
-          | FOR SUITE1
-          | H11 End
-      IS -> H23 EXPR
-          | H24 Pc
-   Comma -> ","
-  Import -> "import"
-  Return -> "return"
-     Def -> "def"
-   While -> "while"
-     For -> "for"
-  Assign -> "="
-    Comp -> ">"
-          | "<"
-          | ">="
-          | "<="
-          | "!="
-          | Assign Assign
-      Op -> "+"
-          | "-"
-          | "/"
-          | "//"
-          | "%"
-          | "*"
-          | Mul Mul
-     Mul -> "*"
-      Po -> "("
-      Pc -> ")"
-      SC -> "]"
-      SO -> "["
-      Co -> "{"
-      Cc -> "}"
-      If -> "if"
-     End -> ":"
-   Class -> "class"
-      As -> "as"
-    From -> "from"
-    With -> "with"
-      In -> "in"
-     Not -> "not"
-      Is -> "is"
-     Per -> "and"
-          | "or"
-      H0 -> H31 Pc
-      H1 -> H32 Return
-      H2 -> Class H5
-      H3 -> If EXPR
-      H4 -> While EXPR
-      H5 -> Var
-      H6 -> H33 As
-      H7 -> H34 Import
-      H8 -> H35 As
-      H9 -> H36 EXPR
-     H10 -> For EXPR
-     H11 -> H37 EXPR
-     H12 -> H5 Assign
-     H13 -> H38 EXPR
-     H14 -> H40 H39
-     H15 -> H5 Op
-     H16 -> H5 Per
-     H17 -> H5 H39
-     H18 -> H5 Comp
-     H19 -> Po EXPR
-     H20 -> Any Comma
-     H21 -> Singles In
-     H22 -> H41 In
-     H23 -> H5 Is
-     H24 -> Po IS
-     H25 -> SO ARG
-     H26 -> Co ARG_DICT
-     H27 -> Po ARG
-     H28 -> Any_Dict Comma
-     H29 -> Singles End
-     H31 -> H42 EXPR
-     H32 -> H0 End
-     H33 -> Import H5
-     H34 -> From H5
-     H35 -> H7 H5
-     H36 -> H44 H43
-     H37 -> EXPR For
-     H38 -> H5 Po
-     H39 -> Dot
-     H40 -> H13 Pc
-     H41 -> For Singles
-     H42 -> H45 Po
-     H43 -> as
-     H44 -> With EXPR
-     H45 -> Def H5
+"S" : ["H0End", "H1EXPR", "H2End", "H3End", "IFSUITE1", "H4End", "WHILESUITE1", "ImportH5", "H6H5", "H7H5", "H8H5", "H9End", "H10End", "FORSUITE1", "H11End", "H12EXPR", "H13Pc", "H14METHOD"],
+"SUITE1" : ["H12 EXPR", "H13 Pc", "H14 METHOD"],
+"EXPR" : ["H15 Singles", "H16 Singles", "H17 METHOD", "H18 Singles", "H19 Pc", "NOT Singles", "H20 ARG", "H13 Pc", "H14 METHOD", "True", "False", "None", "H21 Structs", "H22 Structs", "Var", "Str", "Num", "H23 EXPR", "H24 Pc", "H25 SC", "SO SC", "H26 Cc", "Co Cc", "H27 Pc", "Po Pc"],
+"NOT" : ["NOT Not", "not"],
+"ARG" : ["H20 ARG", "H25 SC", "SO SC", "H26 Cc", "Co Cc", "Var", "Str", "Num", "H27 Pc", "Po Pc", "H13 Pc", "H14 METHOD"],
+"ARG_DICT" : ["H28 Any_Dict", "H29 Any"],
+"Any_Dict" : ["H29 Any"],
+"Any" : ["Var", "Str", "Num", "H13 Pc", "H14 METHOD", "H25 SC", "SO SC", "H26 Cc", "Co Cc", "H27 Pc", "Po Pc"],
+"Singles" : ["Var", "Str", "Num"],
+"Structs" : ["H25 SC", "SO SC", "H26 Cc", "Co Cc", "H27 Pc", "Po Pc"],
+"METHOD" : ["H13 Pc", "H14 METHOD"],
+"IF" : ["H3 End", "IF SUITE1"],
+"WHILE" : ["H4 End", "WHILE SUITE1"],
+"FOR" : ["H10 End", "FOR SUITE1", "H11 End"],
+"IS" : ["H23 EXPR", "H24 Pc"],
+"Comma" : [","],
+"Import" : ["import"],
+"Return" : ["return"],
+"Def" : ["def"],
+"While" : ["while"],
+"For" : ["for"],
+"Assign" : ["="],
+"Comp" : [">", "<", ">=", "<=", "!=", "Assign Assign"],
+"Op" : ["+", "-", "/", "//", "%", "*", "Mul Mul"],
+"Mul" : ["*"],
+"Po" : ["("],
+"Pc" : [")"],
+"SC" : ["],"],
+"SO" : ["["],
+"Co" : ["{"],
+"Cc" : ["}"],
+"If" : ["if"],
+"End" : [":"],
+"Class" : ["class"],
+"As" : ["as"],
+"From" : ["from"],
+"With" : ["with"],
+"In" : ["in"],
+"Not" : ["not"],
+"Is" : ["is"],
+"Per" : ["and", "or"],
+"H0" : ["H31 Pc"],
+"H1" : ["H32 Return"],
+"H2" : ["Class H5"],
+"H3" : ["If EXPR"],
+"H4" : ["While EXPR"],
+"H5" : ["Var"],
+"H6" : ["H33 As"],
+"H7" : ["H34 Import"],
+"H8" : ["H35 As"],
+"H9" : ["H36 EXPR"],
+"H10" : ["For EXPR"],
+"H11" : ["H37 EXPR"],
+"H12" : ["H5 Assign"],
+"H13" : ["H38 EXPR"],
+"H14" : ["H40 H39"],
+"H15" : ["H5 Op"],
+"H16" : ["H5 Per"],
+"H17" : ["H5 H39"],
+"H18" : ["H5 Comp"],
+"H19" : ["Po EXPR"],
+"H20" : ["Any Comma"],
+"H21" : ["Singles In"],
+"H22" : ["H41 In"],
+"H23" : ["H5 Is"],
+"H24" : ["Po IS"],
+"H25" : ["SO ARG"],
+"H26" : ["Co ARG_DICT"],
+"H27" : ["Po ARG"],
+"H28" : ["Any_Dict Comma"],
+"H29" : ["Singles End"],
+"H31" : ["H42 EXPR"],
+"H32" : ["H0 End"],
+"H33" : ["Import H5"],
+"H34" : ["From H5"],
+"H35" : ["H7 H5"],
+"H36" : ["H44 H43"],
+"H37" : ["EXPR For"],
+"H38" : ["H5 Po"],
+"H39" : ["Dot"],
+"H40" : ["H13 Pc"],
+"H41" : ["For Singles"],
+"H42" : ["H45 Po"],
+"H43" : ["as"],
+"H44" : ["With EXPR"],
+"H45" : ["Def H5"],

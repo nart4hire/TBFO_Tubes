@@ -12,31 +12,100 @@ cyk = [[]]
 
 startstate = "S"
 
-grammar = [{}, {}]
-
-grammar[0] = {
-    startstate: ["NpVp", "MulcomEmulcom", "ComMulcom", "LinecomCom", "SCom"],
-    "Vp": ["VpPp", "XNp", "eats"],
-    "Pp": ["YNp"],
-    "Np": ["DetZ", "she"],
-    "X": ["eats"],
-    "Y": ["with"],
-    "Z": ["fish", "fork"],
-    "Det": ["a"],
-    "Emulcom": ["ComMulcom", "ComEmulcom"],
-    "Linecom": ["LinecomCom"],
-    "Com": ["ComCom"]
-}
-
-grammar[1] = {
-    startstate: ["NpVp", "MulcomEmulcom", "ComMulcom", "LinecomCom", "SCom"],
-    "Vp": ["VpPp", "XNp", "eats"],
-    "Pp": ["YNp"],
-    "Np": ["DetZ", "she"],
-    "X": ["eats"],
-    "Y": ["with"],
-    "Z": ["fish", "fork"],
-    "Det": ["a"],
+grammar = {
+    startstate: ["break", "ReturnANNY", "continue", "H0End", "H1EXPR", "H2End", "H3End", "If_funcSUITE1", "H4End", "WH_FSUITE1", "ElseEnd", "ELS_FSUITE1", "ImportH5", "H6H5", "H7H5", "H8H5", "H9End", "H10End", "FO_FSUITE1", "H11End", "H12EXPR", "H13Pc", "H14METHOD", "H15End", "ELF_FSUITE1", "MulcomEmulcom", "ComMulcom", "LinecomCom", "SCom"],
+    "SUITE1": ["H12EXPR", "H13Pc", "H14METHOD"],
+    "EXPR": ["H16Singles", "H17Singles", "H18METHOD", "H19Singles", "H20Pc", "not_funcSingles", "H21ARRG", "H13Pc", "H14METHOD", "True", "False", "None", "H22Structs", "H23Structs", "Var", "Str", "Num", "H24EXPR", "H25Pc", "H26zqC", "zqOzqC", "H27CClose", "COpenCClose", "H28Pc", "POpenPc"],
+    "not_func": ["not_funcnot_real", "not"],
+    "ARRG": ["H21ARRG", "H26zqC", "zqOzqC", "H27CClose", "COpenCClose", "Var", "Str", "Num", "H28Pc", "POpenPc", "H13Pc", "H14METHOD"],
+    "ARG_DICT": ["H29ARG_DICT", "H30ANNY"],
+    "Any_Dict": ["H30ANNY"],
+    "ANNY": ["Var", "Str", "Num", "H13Pc", "H14METHOD", "H26zqC", "zqOzqC", "H27CClose", "COpenCClose", "H28Pc", "POpenPc"],
+    "Singles": ["Var", "Str", "Num"],
+    "Structs": ["H26zqC", "zqOzqC", "H27CClose", "COpenCClose", "H28Pc", "POpenPc"],
+    "METHOD": ["H13Pc", "H14METHOD"],
+    "If_func": ["H3End", "If_funcSUITE1"],
+    "ELF_F": ["H15End", "ELF_FSUITE1"],
+    "ELS_F": ["ElseEnd", "ELS_FSUITE1"],
+    "WH_F": ["H4End", "WH_FSUITE1"],
+    "FO_F": ["H10End", "FO_FSUITE1", "H11End"],
+    "is_Func": ["H24EXPR", "H25Pc"],
+    "Comma": [","],
+    "Import": ["import"],
+    "Return": ["return"],
+    "DEF_R": ["def"],
+    "While": ["while"],
+    "For": ["for"],
+    "Assign": ["="],
+    "Comp": [">", "<", "LegrAssign", "ExclamAssign", "AssignAssign"],
+    "Legr": [">", "<"],
+    "Exclam": ["!"],
+    "OPR": ["+", "-", "/", "DivDiv", "%", "*", "MulMul"],
+    "Div": ["/"],
+    "Mul": ["*"],
+    "POpen": ["("],
+    "Pc": [")"],
+    "zqC": ["]"],
+    "zqO": ["["],
+    "COpen": ["{"],
+    "CClose": ["}"],
+    "Elif": ["elif"],
+    "Else": ["else"],
+    "If_real": ["if"],
+    "End": [":"],
+    "Class": ["class"],
+    "AS_R": ["as"],
+    "From": ["from"],
+    "With": ["with"],
+    "IN_R": ["in"],
+    "not_real": ["not"],
+    "is_real": ["is"],
+    "Per": ["and", "or"],
+    "H0": ["H31Pc"],
+    "H1": ["H32Return"],
+    "H2": ["ClassH5"],
+    "H3": ["If_realEXPR"],
+    "H4": ["WhileEXPR"],
+    "H5": ["Var"],
+    "H6": ["H33AS_R"],
+    "H7": ["H34Import"],
+    "H8": ["H35AS_R"],
+    "H9": ["H36EXPR"],
+    "H10": ["ForEXPR"],
+    "H11": ["H37EXPR"],
+    "H12": ["H5Assign"],
+    "H13": ["H38EXPR"],
+    "H14": ["H40H39"],
+    "H15": ["ElifEXPR"],
+    "H16": ["H5OPR"],
+    "H17": ["H5Per"],
+    "H18": ["H5H39"],
+    "H19": ["H5Comp"],
+    "H20": ["POpenEXPR"],
+    "H21": ["ANNYComma"],
+    "H22": ["SinglesIN_R"],
+    "H23": ["H41IN_R"],
+    "H24": ["H5is_real"],
+    "H25": ["POpenis_Func"],
+    "H26": ["zqOARRG"],
+    "H27": ["COpenARG_DICT"],
+    "H28": ["POpenARRG"],
+    "H29": ["Any_DictComma"],
+    "H30": ["SinglesEnd"],
+    "H31": ["H42EXPR"],
+    "H32": ["H0End"],
+    "H33": ["ImportH5"],
+    "H34": ["FromH5"],
+    "H35": ["H7H5"],
+    "H36": ["H43AS_R"],
+    "H37": ["EXPRFor"],
+    "H38": ["H5POpen"],
+    "H39": ["Dot"],
+    "H40": ["H13Pc"],
+    "H41": ["ForSingles"],
+    "H42": ["H44POpen"],
+    "H43": ["WithEXPR"],
+    "H44": ["DEF_RH5"],
     "Emulcom": ["ComMulcom", "ComEmulcom"],
     "Linecom": ["LinecomCom"],
     "Com": ["ComCom"]
@@ -44,10 +113,10 @@ grammar[1] = {
 
 Error = 0
 
-Errors = ["Syntax", "Naming"]
+Errors = ["Syntax", "Naming", "Outside Primitive"]
 
 
-def isLetter(unsigned):
+def isLetter(unsigned: Char):
     c = ord(unsigned)
     return 65 <= c <= 90 or 97 <= c <= 122
 
@@ -84,7 +153,7 @@ def checkVar(string):
     return Accepted
 
 
-def getCombinations(verticals, diagonals, order=0):
+def getCombinations(verticals, diagonals):
     combinations = list()
     # Find Combinations
     for vert_states, diag_states in zip(verticals, diagonals):
@@ -92,7 +161,7 @@ def getCombinations(verticals, diagonals, order=0):
         for vert_state in vert_states:
             for diag_state in diag_states:
                 current_state = vert_state + diag_state
-                for prev_state, next_states in grammar[order].items():
+                for prev_state, next_states in grammar.items():
                     if current_state in next_states and prev_state not in combinations:
                         combinations.append(prev_state)
     return combinations
@@ -112,7 +181,7 @@ def getCompSets(offset, position):
     return verticals, diagonals
 
 
-def makeCYKTable(line, order=0):
+def makeCYKTable(line):
     # Make an empty 2d array
     global cyk, Error, inMulcom, inLineCom
     cyk = [[]]
@@ -123,7 +192,7 @@ def makeCYKTable(line, order=0):
         # Make Empty State List
         cyk[0].append([])
         # If line is the next state return previous state for all matching states
-        for key, value in grammar[order].items():
+        for key, value in grammar.items():
             if word in value:
                 cyk[0][i].append(key)
         if (inMulcom and not ('"""' in word or "'''" in word)) or (inLineCom):
@@ -133,10 +202,10 @@ def makeCYKTable(line, order=0):
         # If line is not in the next state, line is a variable -> check for variable validity
         # Also Check for comments, multiline comments, string, and num
         if len(cyk[0][i]) == 0:
-            if (('"""' in word[:4] and '"""' in word[-4:]) or ("'''" in word[:4] and "'''" in word[-4:])) and len(word) >= 6:
+            if (('"""' in word[: 4] and '"""' in word[-4:]) or ("'''" in word[: 4] and "'''" in word[-4:])) and len(word) >= 6:
                 cyk[0][i].append(startstate)
                 cyk[0][i].append("Mulcom")
-            elif '"""' in word[:4] or "'''" in word[:4]:
+            elif '"""' in word[: 4] or "'''" in word[: 4]:
                 if not inMulcom or len(word) == 3:
                     cyk[0][i].append(startstate)
                 cyk[0][i].append("Mulcom")
@@ -160,6 +229,10 @@ def makeCYKTable(line, order=0):
                 print(word)
                 Error = 1
                 return [[[]]]
+            for key, value in grammar.items():
+                for state in cyk[0][i]:
+                    if state in value:
+                        cyk[0][i].append(key)
 
     # Make CYK Table for line
     # offset and position
@@ -169,14 +242,14 @@ def makeCYKTable(line, order=0):
         # iterate for each position in line minus the offset (next lines are 1 shorter than the last)
         for position in range(len(line) - offset):
             verticals, diagonals = getCompSets(offset, position)
-            cyk[-1].append(getCombinations(verticals, diagonals, order=order))
+            cyk[-1].append(getCombinations(verticals, diagonals))
     Error = 0
     return cyk
 
 
 def outputTable(Table, line):
     tab = [[', '.join(y) for y in x] for x in Table]
-    print(tabulate(tab, line, tablefmt="fancy_grid", showindex="always"))
+    print(tabulate(tab, line, tablefmt="pretty", showindex="always"))
 
 
 def checkValid(line, readTable=False):
@@ -192,7 +265,7 @@ def readFile(file):
     f = open(file, 'r')
     ori = f.read().split('\n')
     contents = [
-        re.split('([^\w\'\"])', line) for line in ori if line]
+        re.findall('\".+?\"||[\w]+||[\W]+?', line) for line in ori if line]
     contents = [[word for word in line if word and word != ' ']
                 for line in contents]
     f.close()
@@ -200,14 +273,58 @@ def readFile(file):
 
 
 def checkFile(file, readTable=False):
+    global Error
+    Stack = []
     if readTable == False:
         for i, line in enumerate(file):
             if not checkValid(line):
+                return False, i
+            if (line[0] in "def") and ("def" not in Stack):
+                if "if" in Stack:
+                    Stack.remove("if")
+                if "loop" in Stack:
+                    Stack.remove("loop")
+                Stack.append("def")
+            elif (line[0] in "if") and ("if" not in Stack):
+                Stack.append(line[0])
+            elif (line[0] in "forwhile") and ("loop" not in Stack):
+                Stack.append("loop")
+            elif (line[0] in "return") and ("def" not in Stack):
+                Error = 2
+                return False, i
+            elif (line[0] in "elifelse") and ("if" not in Stack):
+                Error = 2
+                return False, i
+            elif (line[0] in "else") and ("if" in Stack):
+                Stack.remove("if")
+            elif (line[0] in "breakcontinue") and ("loop" not in Stack):
+                Error = 2
                 return False, i
         return True, None
     else:
         for i, line in enumerate(file):
             if not checkValid(line, readTable=True):
+                return False, i
+            if (line[0] in "def") and ("def" not in Stack):
+                if "if" in Stack:
+                    Stack.remove("if")
+                if "loop" in Stack:
+                    Stack.remove("loop")
+                Stack.append("def")
+            elif (line[0] in "if") and ("if" not in Stack):
+                Stack.append(line[0])
+            elif (line[0] in "forwhile") and ("loop" not in Stack):
+                Stack.append("loop")
+            elif (line[0] in "return") and ("def" not in Stack):
+                Error = 2
+                return False, i
+            elif (line[0] in "elifelse") and ("if" not in Stack):
+                Error = 2
+                return False, i
+            elif (line[0] in "else") and ("if" in Stack):
+                Stack.remove("if")
+            elif (line[0] in "breakcontinue") and ("loop" not in Stack):
+                Error = 2
                 return False, i
         return True, None
 
@@ -220,10 +337,23 @@ def getIdxLine(lines, list, minline):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 1:
+    if len(sys.argv) > 2 and sys.argv[-1] in 'y':
+        for i, args in enumerate(sys.argv[1: -1]):
+            file, ori = readFile(args)
+            if sys.argv[-1] in 'y':
+                valid, line = checkFile(file, readTable=True)
+            else:
+                valid, line = checkFile(file)
+            if valid:
+                print("File %d" % (i + 1) + " successfully compiled.")
+            else:
+                x = getIdxLine(ori, file[line], line)
+                print("File %d" % (i + 1) + " had a %s error." % Errors[Error])
+                print("(Error Located at line: %d, in '%s')" % (x + 1, ori[x]))
+
+    elif len(sys.argv) > 1:
         for i, args in enumerate(sys.argv[1:]):
             file, ori = readFile(args)
-            print(file)
             valid, line = checkFile(file)
             if valid:
                 print("File %d" % (i + 1) + " successfully compiled.")
@@ -231,6 +361,7 @@ if __name__ == "__main__":
                 x = getIdxLine(ori, file[line], line)
                 print("File %d" % (i + 1) + " had a %s error." % Errors[Error])
                 print("(Error Located at line: %d, in '%s')" % (x + 1, ori[x]))
+
     else:
         filename = input('Input file name :')
         debug = input('Debug :')

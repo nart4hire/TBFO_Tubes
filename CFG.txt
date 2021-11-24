@@ -1,0 +1,11 @@
+Itters -> Var | Num | Str | Tuple
+Dats -> Var | Num | Str | Tuple | List | Dict | Method | Dats Dot Method
+Args -> Dats Comma Args | Dats
+Tuple -> Pareno Parenc | Pareno Args Parenc
+List -> Sqbo Sqbc | Sqbo Args Sqbc
+Dict -> Curlyo Curlyc | Curlyo Itters Colon Dats Curlyc
+Method -> Var Tuple | Method Dot Method
+Compare -> Var Parator Compare | Boolean Parator Compare | Num Parator Compare | Var | Boolean | Num
+Boolean -> "True" | "False"
+Parator -> "<" | ">" | Asgn Asgn | Legr Asgn
+Legr -> "<" | ">"

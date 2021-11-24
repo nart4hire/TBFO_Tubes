@@ -1,4 +1,22 @@
-she eats a fish with a fork
+from tabulate import tabulate
+import sys
+
+num = 10
+x = num
+greg = "name"
+
+lista = ["dog"]
+listb = [1, "lol", greg]
+
+tupa = ()
+tupb = (2, greg, "kek")
+
+dicta = {}
+dictb = {"a": 10, greg: "b", 10: num}
+
+while True:
+    break
+
 """ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 Cras ut urna erat. Nam mollis justo turpis, sed egestas nisi gravida
 tristique. Nam in tristique lacus. Suspendisse sed metus at lacus
