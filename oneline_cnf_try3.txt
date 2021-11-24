@@ -1,0 +1,192 @@
+       S -> H0 End
+          | H1 EXPR
+          | H2 End
+          | H3 End
+          | IF SUITE1
+          | H4 End
+          | WHILE SUITE1
+          | Else End --
+          | ELSE SUITE1 --
+          | Import H5
+          | H6 H5
+          | H7 H5
+          | H8 H5
+          | H9 End
+          | H10 End
+          | FOR SUITE1
+          | H11 End
+          | H12 EXPR
+          | H13 Pc
+          | H14 METHOD
+          | H15 End -- 
+          | ELIF SUITE1 --
+  SUITE1 -> H12 EXPR
+          | H13 Pc
+          | H14 METHOD
+    EXPR -> H16 Singles
+          | H17 Singles
+          | H18 METHOD
+          | H19 Singles
+          | H20 Pc
+          | NOT Singles
+          | H21 ARG
+          | H13 Pc
+          | H14 METHOD
+          | "True"
+          | "False"
+          | "None"
+          | H22 Structs
+          | H23 Structs
+          | Var
+          | Str
+          | Num
+          | 
+          | H24 EXPR 
+          | H25 Pc
+          | H26 SC
+          | SO SC
+          | H27 Cc
+          | Co Cc
+          | H28 Pc
+          | Po Pc
+     NOT -> NOT Not
+          | "not"
+     ARG -> H21 ARG
+          | H26 SC
+          | SO SC
+          | H27 Cc
+          | Co Cc
+          | Var
+          | Str
+          | Num
+          | 
+          | H28 Pc
+          | Po Pc
+          | H13 Pc
+          | H14 METHOD
+ARG_DICT -> H29 ARG_DICT
+          | H30 Any
+Any_Dict -> H30 Any
+     Any -> Var
+          | Str
+          | Num
+          | 
+          | H13 Pc
+          | H14 METHOD
+          | H26 SC
+          | SO SC
+          | H27 Cc
+          | Co Cc
+          | H28 Pc
+          | Po Pc
+ Singles -> Var
+          | Str
+          | Num
+          | 
+ Structs -> H26 SC
+          | SO SC
+          | H27 Cc
+          | Co Cc
+          | H28 Pc
+          | Po Pc
+  METHOD -> H13 Pc
+          | H14 METHOD
+      IF -> H3 End
+          | IF SUITE1
+    ELIF -> H15 End
+          | ELIF SUITE1
+    ELSE -> Else End
+          | ELSE SUITE1
+   WHILE -> H4 End
+          | WHILE SUITE1
+     FOR -> H10 End
+          | FOR SUITE1
+          | H11 End
+      IS -> H24 EXPR
+          | H25 Pc
+   Comma -> ","
+  Import -> "import"
+  Return -> "return"
+     Def -> "def"
+   While -> "while"
+     For -> "for"
+  Assign -> "="
+    Comp -> ">"
+          | "<"
+          | ">="
+          | "<="
+          | "!="
+          | Assign Assign
+      Op -> "+"
+          | "-"
+          | "/"
+          | "//"
+          | "%"
+          | "*"
+          | Mul Mul
+     Mul -> "*"
+      Po -> "("
+      Pc -> ")"
+      SC -> "]"
+      SO -> "["
+      Co -> "{"
+      Cc -> "}"
+    Elif -> "elif"
+    Else -> "else"
+      If -> "if"
+     End -> ":"
+   Class -> "class"
+      As -> "as"
+    From -> "from"
+    With -> "with"
+      In -> "in"
+     Not -> "not"
+      Is -> "is"
+     Per -> "and"
+          | "or"
+      H0 -> H31 Pc
+      H1 -> H32 Return
+      H2 -> Class H5
+      H3 -> If EXPR
+      H4 -> While EXPR
+      H5 -> Var
+      H6 -> H33 As
+      H7 -> H34 Import
+      H8 -> H35 As
+      H9 -> H36 EXPR
+     H10 -> For EXPR
+     H11 -> H37 EXPR
+     H12 -> H5 Assign
+     H13 -> H38 EXPR
+     H14 -> H40 H39
+     H15 -> Elif EXPR
+     H16 -> H5 Op
+     H17 -> H5 Per
+     H18 -> H5 H39
+     H19 -> H5 Comp
+     H20 -> Po EXPR
+     H21 -> Any Comma
+     H22 -> Singles In
+     H23 -> H41 In
+     H24 -> H5 Is
+     H25 -> Po IS
+     H26 -> SO ARG
+     H27 -> Co ARG_DICT
+     H28 -> Po ARG
+     H29 -> Any_Dict Comma
+     H30 -> Singles End
+     H31 -> H42 EXPR
+     H32 -> H0 End
+     H33 -> Import H5
+     H34 -> From H5
+     H35 -> H7 H5
+     H36 -> H44 H43
+     H37 -> EXPR For
+     H38 -> H5 Po
+     H39 -> Dot
+     H40 -> H13 Pc
+     H41 -> For Singles
+     H42 -> H45 Po
+     H43 -> as
+     H44 -> With EXPR
+     H45 -> Def H5
