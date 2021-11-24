@@ -1,24 +1,24 @@
 S ->  DEF | IMPORT | CLASS | SUITE | WITH | Pass
 
-SUITE -> IF | LOOP | ASSIGNMENT | METHOD #change
+SUITE -> IF | LOOP | ASSIGNMENT | METHOD | SUITE Comment
 
 ASSIGNMENT -> Var
 
-IF -> If | If Raise | If ELIF Else | If Else | If ISI_S ELIF ISI_S Else | If ISI_S Else | If ISI_S ELIF Else | If ELIF ISI_S Else #change
-ELIF -> ELIF Elif | Elif
+IF -> If | If Raise | If ELif Else | If Else | If ISI_S ELif ISI_S Else | If ISI_S Else | If ISI_S ELif Else | If ELif ISI_S Else | IF Comment
+
+ELif -> ELif Elif | Elif | ELif Comment
 
 LOOP -> WHILE | FOR
 
-WHILE -> While | While CONTROL | While ISI_S CONTROL #change
+WHILE -> While | While CONTROL | While ISI_S CONTROL | WHILE Comment
 
-FOR -> For | For CONTROL | For ISI_S CONTROL #change
+FOR -> For | For CONTROL | For ISI_S CONTROL | FOR Comment
 
-DEF -> Def ISI_S | Def | Def Return
+DEF -> Def ISI_S | Def | Def Return | DEF Comment
 
-ISI -> SUITE | ISI SUITE #change
+ISi -> SUITE | ISi SUITE
 
-ISI_S -> S | ISI S 
-
+ISI_S -> S | ISi S
 
 IMPORT -> "import" | "from"
 CLASS -> "class"
