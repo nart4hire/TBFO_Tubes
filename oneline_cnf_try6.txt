@@ -40,8 +40,8 @@
           | "True"
           | "False"
           | "None"
-          | H22 Structs
-          | H23 Structs
+          | H22 ANNY
+          | H23 ANNY
           | Var
           | Str
           | Num
@@ -96,16 +96,6 @@ Any_Dict -> H34 ANNY
  Singles -> Var
           | Str
           | Num
- Structs -> H26 zqC
-          | zqO zqC
-          | H27 zqC
-          | H28 zqC
-          | H29 CClose
-          | COpen CClose
-          | H30 Pc
-          | POpen Pc
-          | H31 Pc
-          | H32 Pc
   METHOD -> H13 Pc
           | H14 METHOD
  If_func -> H3 End

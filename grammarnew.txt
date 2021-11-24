@@ -4,7 +4,7 @@ SUITE1 -> ASSNMENT | METHOD | Break
 
 SUITE2 -> If_func | FO_F | WH_F | ELF_F | ELS_F 
 
-ASSNMENT -> Var Assign EXPR
+ASSNMENT -> Var Assign EXPR | Var Assign ANNY
 
 EXPR -> ANNY | Var OPR Singles | Var Per Singles | ARRG | Var Dot METHOD | METHOD | Var Comp Singles | POpen EXPR Pc | Bool | not_func Singles | IN_F | is_Func
 
@@ -49,7 +49,7 @@ CONTROL -> Break | Continue
 
 WTH_F -> With EXPR AS_R EXPR End
 
-IN_F -> Singles IN_R Structs | For Singles IN_R Structs
+IN_F -> Singles IN_R ANNY | For Singles IN_R ANNY
 
 is_Func -> Var is_real EXPR | POpen is_Func Pc
 
