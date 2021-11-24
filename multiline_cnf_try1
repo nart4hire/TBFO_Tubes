@@ -1,0 +1,145 @@
+      S -> Def ISI_S
+         | Def Return
+         | DEF H0
+         | "class"
+         | With S
+         | "def"
+         | "with"
+         | "import"
+         | "from"
+         | "pass"
+         | METHOD
+         | SUITE H0
+         | If Raise
+         | H1 Else
+         | If Else
+         | H2 Else
+         | H3 Else
+         | H4 Else
+         | H5 Else
+         | IF H0
+         | Var
+         | "if"
+         | While CONTROL
+         | H6 CONTROL
+         | WHILE H0
+         | "while"
+         | For CONTROL
+         | H7 CONTROL
+         | FOR H0
+         | "for"
+  SUITE -> METHOD
+         | SUITE H0
+         | If Raise
+         | H1 Else
+         | If Else
+         | H2 Else
+         | H3 Else
+         | H4 Else
+         | H5 Else
+         | IF H0
+         | Var
+         | "if"
+         | While CONTROL
+         | H6 CONTROL
+         | WHILE H0
+         | "while"
+         | For CONTROL
+         | H7 CONTROL
+         | FOR H0
+         | "for"
+     IF -> If Raise
+         | H1 Else
+         | If Else
+         | H2 Else
+         | H3 Else
+         | H4 Else
+         | H5 Else
+         | IF H0
+         | "if"
+   ELif -> ELif Elif
+         | ELif H0
+         | "elif"
+  WHILE -> While CONTROL
+         | H6 CONTROL
+         | WHILE H0
+         | "while"
+    FOR -> For CONTROL
+         | H7 CONTROL
+         | FOR H0
+         | "for"
+    DEF -> Def ISI_S
+         | Def Return
+         | DEF H0
+         | "def"
+    ISi -> ISi SUITE
+         | METHOD
+         | SUITE H0
+         | If Raise
+         | H1 Else
+         | If Else
+         | H2 Else
+         | H3 Else
+         | H4 Else
+         | H5 Else
+         | IF H0
+         | Var
+         | "if"
+         | While CONTROL
+         | H6 CONTROL
+         | WHILE H0
+         | "while"
+         | For CONTROL
+         | H7 CONTROL
+         | FOR H0
+         | "for"
+  ISI_S -> ISi S
+         | Def ISI_S
+         | Def Return
+         | DEF H0
+         | "class"
+         | With S
+         | "def"
+         | "with"
+         | "import"
+         | "from"
+         | "pass"
+         | METHOD
+         | SUITE H0
+         | If Raise
+         | H1 Else
+         | If Else
+         | H2 Else
+         | H3 Else
+         | H4 Else
+         | H5 Else
+         | IF H0
+         | Var
+         | "if"
+         | While CONTROL
+         | H6 CONTROL
+         | WHILE H0
+         | "while"
+         | For CONTROL
+         | H7 CONTROL
+         | FOR H0
+         | "for"
+CONTROL -> "break"
+         | "continue"
+   With -> "with"
+ Return -> "return"
+    Def -> "def"
+  While -> "while"
+    For -> "for"
+     If -> "if"
+   Elif -> "elif"
+   Else -> "else"
+  Raise -> "raise"
+     H0 -> Comment
+     H1 -> If ELif
+     H2 -> H4 ISI_S
+     H3 -> If ISI_S
+     H4 -> H3 ELif
+     H5 -> H1 ISI_S
+     H6 -> While ISI_S
+     H7 -> For ISI_S
