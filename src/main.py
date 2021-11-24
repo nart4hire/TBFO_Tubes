@@ -237,7 +237,6 @@ def makeCYKTable(line):
             elif checkVar(word):
                 cyk[0][i].append("Var")
             else:
-                print(word)
                 Error = 1
                 return [[[]]]
             for key, value in grammar.items():
