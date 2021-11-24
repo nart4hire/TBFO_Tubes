@@ -4,14 +4,18 @@ from tabulate import tabulate
 
 inMulcom = False
 
+inLineCom = False
+
 FA_state = 'p'
 
 cyk = [[]]
 
 startstate = "S"
 
-grammar = {
-    startstate: ["NpVp", "MulcomEmulcom", "ComMulcom"],
+grammar = [{}, {}]
+
+grammar[0] = {
+    startstate: ["NpVp", "MulcomEmulcom", "ComMulcom", "LinecomCom", "SCom"],
     "Vp": ["VpPp", "XNp", "eats"],
     "Pp": ["YNp"],
     "Np": ["DetZ", "she"],
@@ -19,13 +23,26 @@ grammar = {
     "Y": ["with"],
     "Z": ["fish", "fork"],
     "Det": ["a"],
-    "Emulcom": ["ComMulcom", "Com"],
+    "Emulcom": ["ComMulcom", "ComEmulcom"],
+    "Linecom": ["LinecomCom"],
     "Com": ["ComCom"]
 }
 
+grammar[1] = {
+    startstate: ["NpVp", "MulcomEmulcom", "ComMulcom", "LinecomCom", "SCom"],
+    "Vp": ["VpPp", "XNp", "eats"],
+    "Pp": ["YNp"],
+    "Np": ["DetZ", "she"],
+    "X": ["eats"],
+    "Y": ["with"],
+    "Z": ["fish", "fork"],
+    "Det": ["a"],
+    "Emulcom": ["ComMulcom", "ComEmulcom"],
+    "Linecom": ["LinecomCom"],
+    "Com": ["ComCom"]
+}
 
 Error = 0
-
 
 Errors = ["Syntax", "Naming"]
 
@@ -67,7 +84,7 @@ def checkVar(string):
     return Accepted
 
 
-def getCombinations(verticals, diagonals):
+def getCombinations(verticals, diagonals, order=0):
     combinations = list()
     # Find Combinations
     for vert_states, diag_states in zip(verticals, diagonals):
@@ -75,7 +92,7 @@ def getCombinations(verticals, diagonals):
         for vert_state in vert_states:
             for diag_state in diag_states:
                 current_state = vert_state + diag_state
-                for prev_state, next_states in grammar.items():
+                for prev_state, next_states in grammar[order].items():
                     if current_state in next_states and prev_state not in combinations:
                         combinations.append(prev_state)
     return combinations
@@ -95,26 +112,44 @@ def getCompSets(offset, position):
     return verticals, diagonals
 
 
-def makeCYKTable(line):
+def makeCYKTable(line, order=0):
     # Make an empty 2d array
-    global cyk, Error, inMulcom
+    global cyk, Error, inMulcom, inLineCom
     cyk = [[]]
+    inLineCom = False
     # Get CNF form of all words in line
     # Iterate through list of words
     for i, word in enumerate(line):
         # Make Empty State List
         cyk[0].append([])
         # If line is the next state return previous state for all matching states
-        for key, value in grammar.items():
+        for key, value in grammar[order].items():
             if word in value:
                 cyk[0][i].append(key)
-        if inMulcom and not '"""' in word[:4] or "'''" in word[-4:]:
+        if (inMulcom and not ('"""' in word or "'''" in word)) or (inLineCom):
+            if i == 0:
+                cyk[0][i].append(startstate)
             cyk[0][i].append("Com")
         # If line is not in the next state, line is a variable -> check for variable validity
+        # Also Check for comments, multiline comments, string, and num
         if len(cyk[0][i]) == 0:
-            if '"""' in word[:4] or "'''" in word[-4:]:
+            if (('"""' in word[:4] and '"""' in word[-4:]) or ("'''" in word[:4] and "'''" in word[-4:])) and len(word) >= 6:
+                cyk[0][i].append(startstate)
+                cyk[0][i].append("Mulcom")
+            elif '"""' in word[:4] or "'''" in word[:4]:
+                if not inMulcom or len(word) == 3:
+                    cyk[0][i].append(startstate)
                 cyk[0][i].append("Mulcom")
                 inMulcom = not inMulcom
+            elif '"""' in word[-4:] or "'''" in word[-4:]:
+                if inMulcom or len(word) == 3:
+                    cyk[0][i].append(startstate)
+                cyk[0][i].append("Mulcom")
+                inMulcom = not inMulcom
+            elif ('#' in word[0]):
+                cyk[0][i].append(startstate)
+                cyk[0][i].append("Linecom")
+                inLineCom = True
             elif ('"' in word[0] and '"' in word[-1]) or ("'" in word[0] and "'" in word[-1]):
                 cyk[0][i].append("Str")
             elif all(isNumber(x) for x in word):
@@ -122,9 +157,10 @@ def makeCYKTable(line):
             elif checkVar(word):
                 cyk[0][i].append("Var")
             else:
+                print(word)
                 Error = 1
                 return [[[]]]
-            
+
     # Make CYK Table for line
     # offset and position
     for offset in range(1, len(line)):
@@ -133,7 +169,7 @@ def makeCYKTable(line):
         # iterate for each position in line minus the offset (next lines are 1 shorter than the last)
         for position in range(len(line) - offset):
             verticals, diagonals = getCompSets(offset, position)
-            cyk[-1].append(getCombinations(verticals, diagonals))
+            cyk[-1].append(getCombinations(verticals, diagonals, order=order))
     Error = 0
     return cyk
 
@@ -155,8 +191,10 @@ def checkValid(line, readTable=False):
 def readFile(file):
     f = open(file, 'r')
     ori = f.read().split('\n')
-    contents = [re.split('([(\-+*/)\s\(\)\[\]\{\}])', line) for line in ori if line]
-    contents = [[word for word in line if word and word != ' '] for line in contents]
+    contents = [
+        re.split('([^\w\'\"])', line) for line in ori if line]
+    contents = [[word for word in line if word and word != ' ']
+                for line in contents]
     f.close()
     return contents, ori
 
