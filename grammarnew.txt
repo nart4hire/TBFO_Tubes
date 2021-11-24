@@ -1,0 +1,97 @@
+S ->  DEF | IMPORT | CLASS | SUITE1 | SUITE2 | WITH
+
+SUITE1 -> ASSIGNMENT | METHOD
+
+SUITE2 -> IF | FOR | WHILE
+
+ASSIGNMENT -> Var Assign EXPR
+
+EXPR -> Any | Var Op Singles | Var Per Singles | ARG | Var Dot METHOD | METHOD | Var Comp Singles | Po EXPR Pc | Bool | NOT Singles | IN | IS
+
+NOT -> Not | NOT Not
+
+ARG -> Any Comma ARG | Any 
+
+ARG_DICT -> Any_Dict Comma Any_Dict | Any_Dict
+
+Any_Dict -> Singles End Any
+
+Any -> Singles | Structs | METHOD
+
+Singles -> Var | Str | Num | 
+
+Structs -> List | Tuple | Dict 
+
+METHOD -> Var Po EXPR Pc | Var Po EXPR Pc Dot METHOD    
+
+IF -> If EXPR End | IF SUITE1
+
+ELIF -> Elif EXPR End
+
+ELSE -> Else End
+
+WHILE -> While EXPR End | WHILE SUITE1
+
+FOR -> For EXPR End | FOR SUITE1 | EXPR For EXPR End
+
+DEF -> Def Var Po EXPR Pc End | Def Var Po EXPR Pc End Return EXPR
+
+IMPORT -> Import Var | Import Var As Var | From Var Import Var | From Var Import Var As Var #change
+
+CLASS -> Class Var End
+
+CONTROL -> Break | Continue
+
+WITH -> With EXPR as EXPR End
+
+IN -> Singles In Structs | For Singles In Structs
+
+IS -> Var Is EXPR | Po IS Pc
+
+List -> SO ARG SC | SO SC
+
+Tuple -> Po ARG Pc | Po Pc
+
+Dict -> Co ARG_DICT Cc | Co Cc
+
+Comma -> ","
+Import -> "import"
+Return -> "return"
+Def -> "def"
+While -> "while"
+For -> "for"
+Break -> "break"
+T -> "True"
+F -> "False"
+Assign -> "=" 
+Eq -> Assign Assign
+Comp -> Eq | ">" | "<" | ">=" | "<=" | "!="
+Op -> "+" | "-" | Mul | "/" | "//" | "%" | Pow
+Mul -> "*"
+Pow -> Mul Mul
+Po -> "("
+Pc -> ")"
+SC -> "]"
+SO -> "["
+Co -> "{"
+Cc -> "}"
+Elif -> "elif"
+Else -> "else"
+If -> "if"
+End -> ":"
+
+Continue -> "continue"
+Class -> "class"
+As -> "as"
+From -> "from"
+Pass -> "pass"
+Raise -> "raise"
+With -> "with"
+In -> "in"
+Not -> "not"
+Is -> "is"
+
+Exp -> Var | Var Ops | Var Comp
+Ops -> Per Exp | Per Bool
+Per -> "and" | "or"
+Bool -> "True" | "False" | "None"
