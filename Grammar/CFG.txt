@@ -1,0 +1,102 @@
+S ->  DEF_F | IMP_F | CLS_F | SUITE1 | SUITE2 | WTH_F | Break | Return ANNY
+
+SUITE1 -> ASSNMENT | METHOD | Break 
+
+SUITE2 -> If_func | FO_F | WH_F | ELF_F | ELS_F 
+
+ASSNMENT -> Var Assign EXPR | Var Assign ANNY
+
+EXPR -> ANNY | Var OPR Singles | Var Per Singles | ARRG | Var Dot METHOD | METHOD | Var Comp Singles | POpen EXPR Pc | Bool | not_func Singles | IN_F | is_Func
+
+not_func -> not_real | not_func not_real
+
+ARRG -> ANNY Comma ARRG | ANNY 
+
+ARG_DICT -> Any_Dict Comma ARG_DICT | Any_Dict
+
+Any_Dict -> Singles End ANNY
+
+ANNY -> Singles | Structs | METHOD
+
+Singles -> Var | Str | Num 
+
+Structs -> List | Tuple | DCT 
+
+METHOD -> Var POpen EXPR Pc | Var POpen EXPR Pc Dot METHOD    
+
+If_func -> If_real EXPR End | If_func SUITE1 
+
+
+INL_IF -> ANNY If_real EXPR | ANNY If_real EXPR ELS_F | INL_IF For EXPR
+
+INL_FOR -> ANNY For EXPR | INL_FOR If_real EXPR | INL_FOR If_real EXPR ELS_F 
+
+ELF_F -> Elif EXPR End | ELF_F SUITE1
+
+ELS_F -> Else End | ELS_F SUITE1
+
+WH_F -> While EXPR End | WH_F SUITE1
+
+FO_F -> For EXPR End | FO_F SUITE1 | EXPR For EXPR End
+
+DEF_F -> DEF_R Var POpen EXPR Pc End | DEF_R Var POpen EXPR Pc End Return EXPR
+
+IMP_F -> Import Var | Import Var AS_R Var | From Var Import Var | From Var Import Var AS_R Var
+
+CLS_F -> Class Var End
+
+CONTROL -> Break | Continue
+
+WTH_F -> With EXPR AS_R EXPR End
+
+IN_F -> Singles IN_R ANNY | For Singles IN_R ANNY
+
+is_Func -> Var is_real EXPR | POpen is_Func Pc
+
+List -> zqO ARRG zqC | zqO zqC | zqO INL_FOR zqC | zqO INL_IF zqC
+
+Tuple -> POpen ARRG Pc | POpen Pc | POpen INL_FOR Pc | POpen INL_IF Pc
+
+DCT -> COpen ARG_DICT CClose | COpen CClose
+
+Comma -> ","
+Import -> "import"
+Return -> "return"
+DEF_R -> "def"
+While -> "while"
+For -> "for"
+Break -> "break"
+TRUE -> "True"
+FALSE -> "False"
+Assign -> "=" 
+Eq -> Assign Assign
+Comp -> Eq | ">" | "<" | ">=" | "<=" | "!="
+OPR -> "+" | "-" | Mul | "/" | "//" | "%" | Pow
+Mul -> "*"
+Pow -> Mul Mul
+POpen -> "("
+Pc -> ")"
+zqC -> "]"
+zqO -> "["
+COpen -> "{"
+CClose -> "}"
+Elif -> "elif"
+Else -> "else"
+If_real -> "if"
+End -> ":"
+
+Continue -> "continue"
+Class -> "class"
+AS_R -> "as"
+From -> "from"
+Pass -> "pass"
+Raise -> "raise"
+With -> "with"
+IN_R -> "in"
+not_real -> "not"
+is_real -> "is"
+
+EXPS -> Var | Var Ops | Var Comp
+Ops -> Per EXPS | Per Bool
+Per -> "and" | "or"
+Bool -> "True" | "False" | "None"
