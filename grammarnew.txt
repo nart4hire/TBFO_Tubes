@@ -1,0 +1,72 @@
+S ->  DEF | IMPORT | CLASS | SUITE1 | SUITE2 | WITH
+
+SUITE1 -> ASSIGNMENT | METHOD
+
+SUITE2 -> IF | FOR | WHILE
+
+ASSIGNMENT -> Var Assign EXPR
+
+EXPR -> Var | Var Op EXPR | Var Per EXPR | ARG | Var Dot METHOD | METHOD | Var Comp EXPR | Po EXPR Pc | Bool | Not EXPR | IN | IS
+
+ARG -> Var Comma ARG | Var
+
+METHOD -> Var Po EXPR Pc | Var Po EXPR Pc Dot METHOD
+
+IF -> If EXPR End | IF SUITE1
+
+ELIF -> Elif EXPR End
+
+ELSE -> Else End
+
+WHILE -> While EXPR End | WHILE SUITE1
+
+FOR -> For EXPR End | FOR SUITE1 | EXPR For EXPR End
+
+DEF -> Def Var Po EXPR Pc End | Def Var Po EXPR Pc End Return EXPR
+
+IMPORT -> Import Var | Import Var As Var | From Var Import Var | From Var Import Var As Var #change
+
+CLASS -> Class Var End
+
+CONTROL -> Break | Continue
+
+WITH -> With EXPR as EXPR End
+
+IN -> EXPR In EXPR | For EXPR In EXPR
+
+IS -> Var Is EXPR | Po IS Pc
+
+Comma -> ","
+Import -> "import"
+Return -> "return"
+Def -> "def"
+While -> "while"
+For -> "for"
+Break -> "break"
+T -> "True"
+F -> "False"
+Assign -> "=" | "+=" | "-=" | "*=" | "//=" | "%=" | "/="
+Comp -> "==" | ">" | "<" | ">=" | "<=" | "!="
+Op -> "+" | "-" | "*" | "/" | "//" | "%" | "**"
+Po -> "("
+Pc -> ")"
+Elif -> "elif"
+Else -> "else"
+If -> "if"
+End -> ":"
+
+Continue -> "continue"
+Class -> "class"
+As -> "as"
+From -> "from"
+Pass -> "pass"
+Raise -> "raise"
+With -> "with"
+In -> "in"
+Not -> "not"
+Is -> "is"
+
+Exp -> Var | Var Ops | Var Comp
+Ops -> Per Exp | Per Bool
+Per -> "and" | "or"
+Bool -> "True" | "False" | "None"
